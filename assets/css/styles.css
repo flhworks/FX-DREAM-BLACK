@@ -2153,6 +2153,15 @@ button {
     transform: rotate(90deg);
   }
 
+  .screens-section > .container {
+    grid-template-columns: 1fr;
+  }
+
+  .screens-section .section-intro,
+  .reversal-story {
+    grid-column: 1;
+  }
+
   .screen-story,
   .screen-story.reverse {
     display: grid;
@@ -2467,11 +2476,3 @@ button {
     padding: 21px 18px;
   }
 }
-  .screens-section > .container {
-    grid-template-columns: 1fr;
-  }
-
-  .screens-section .section-intro,
-  .reversal-story {
-    grid-column: 1;
-  }
