@@ -53,7 +53,7 @@ p, h1, h2, h3, h4 { margin-top: 0; }
 .button-primary:hover, .header-cta:hover { box-shadow: 0 19px 48px rgba(41, 226, 193, .28); }
 .button-primary span, .closing-button span { margin-left: 18px; font-size: 20px; }
 .button-outline { color: var(--gold-light); border-color: var(--line-gold); background: rgba(229, 197, 110, .05); }.button-outline:hover { border-color: var(--gold); }
-.header-cta { min-height: 44px; padding: 10px 20px; font-size: 12px; }
+.header-cta { min-height: 44px; padding: 10px 20px; font-size: 12px; white-space: nowrap; }
 .text-button { display: inline-flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--white); background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.35); font-weight: 800; cursor: pointer; }.text-button:hover { color: var(--cyan-light); border-color: var(--cyan); }
 .menu-button { display: none; width: 46px; height: 46px; margin-left: auto; background: transparent; border: 1px solid var(--line); border-radius: 50%; cursor: pointer; }.menu-button span { display: block; width: 19px; height: 1px; margin: 5px auto; background: var(--white); transition: transform .2s ease; }
 .mobile-nav { display: none; }
@@ -127,6 +127,10 @@ p, h1, h2, h3, h4 { margin-top: 0; }
 
 @media (max-width: 1100px) {
   .desktop-nav { display: none; }
+  .header-cta { margin-left: auto; }
+  .menu-button { display: block; margin-left: 12px; }
+  .mobile-nav { position: absolute; inset: var(--header) 0 auto; display: grid; max-height: 0; overflow: hidden; background: rgba(3,7,11,.97); transition: max-height .3s ease; }.mobile-nav.is-open { max-height: 440px; border-bottom: 1px solid var(--line); }.mobile-nav a { padding: 14px 24px; color: #cbd5d7; border-top: 1px solid var(--line); font-size: 13px; font-weight: 700; }
+  .menu-button[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }.menu-button[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
   .hero { min-height: auto; padding-top: calc(var(--header) + 60px); }
   .hero-layout { grid-template-columns: 1fr; gap: 55px; }
   .hero-copy { max-width: 780px; }.hero-visual { width: min(100%, 820px); margin: 0 auto; }
@@ -141,9 +145,7 @@ p, h1, h2, h3, h4 { margin-top: 0; }
   :root { --header: 66px; }
   .container, .narrow { width: min(calc(100% - 34px), var(--container)); }
   .section { padding: 76px 0; }
-  .header-cta { display: none; }.terms-page .header-cta { display: inline-flex; min-height: 40px; padding: 8px 14px; }.menu-button { display: block; }
-  .mobile-nav { position: absolute; inset: var(--header) 0 auto; display: grid; max-height: 0; overflow: hidden; background: rgba(3,7,11,.97); transition: max-height .3s ease; }.mobile-nav.is-open { max-height: 440px; border-bottom: 1px solid var(--line); }.mobile-nav a { padding: 14px 24px; color: #cbd5d7; border-top: 1px solid var(--line); font-size: 13px; font-weight: 700; }
-  .menu-button[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }.menu-button[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+  .header-cta { display: none; }.terms-page .header-cta { display: inline-flex; min-height: 40px; padding: 8px 14px; }.menu-button { margin-left: auto; }
   .hero { min-height: auto; padding: calc(var(--header) + 45px) 0 72px; }.hero-layout { gap: 45px; }.hero h1 { font-size: clamp(50px, 10vw, 68px); }.hero-stats { grid-template-columns: 1.25fr 1fr 1fr; }
   .split-heading, .transformation, .evidence-layout, .recovery-story, .offer-body, .guarantee-card { grid-template-columns: 1fr; gap: 34px; }.split-heading { align-items: start; }.section-heading { margin-bottom: 40px; }
   .transformation { padding: 40px; }.logic-flow { grid-template-columns: 1fr; }.logic-flow li::after { display: none; }.logic-flow li { min-height: auto; }
@@ -158,6 +160,7 @@ p, h1, h2, h3, h4 { margin-top: 0; }
 
 @media (max-width: 600px) {
   body { padding-bottom: 73px; font-size: 15px; }
+  .terms-page { padding-bottom: 0; }
   .container, .narrow { width: calc(100% - 28px); }
   .section { padding: 61px 0; }
   .brand-name strong { font-size: 16px; }.brand-name em { font-size: 9px; }

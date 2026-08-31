@@ -8,6 +8,7 @@
   const modalImage = document.querySelector('[data-modal-image]');
   const modalCaption = document.querySelector('[data-modal-caption]');
   const modalClose = document.querySelector('[data-modal-close]');
+  const modalBackground = document.querySelectorAll('.skip-link, .site-header, main, .site-footer, .mobile-fixed-cta');
   let lastFocused = null;
 
   const updateHeader = () => {
@@ -59,6 +60,7 @@
     if (!modal || modal.hidden) return;
     modal.hidden = true;
     document.body.classList.remove('modal-open');
+    modalBackground.forEach((element) => element.removeAttribute('inert'));
     if (modalImage) {
       modalImage.removeAttribute('src');
       modalImage.alt = '';
@@ -75,6 +77,8 @@
     modalImage.src = imageUrl;
     modalImage.alt = trigger.dataset.caption || '拡大画像';
     modalCaption.textContent = trigger.dataset.caption || '';
+    closeMenu();
+    modalBackground.forEach((element) => element.setAttribute('inert', ''));
     modal.hidden = false;
     document.body.classList.add('modal-open');
     requestAnimationFrame(() => modalClose?.focus());
@@ -88,6 +92,11 @@
     if (event.target === modal) closeModal();
   });
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab' && modal && !modal.hidden) {
+      event.preventDefault();
+      modalClose?.focus();
+      return;
+    }
     if (event.key === 'Escape') {
       closeModal();
       closeMenu();
@@ -95,5 +104,8 @@
   });
 
   window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100) closeMenu();
+  });
   updateHeader();
 })();
