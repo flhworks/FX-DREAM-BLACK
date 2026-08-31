@@ -856,6 +856,16 @@ button {
   border-top: 1px solid var(--line);
 }
 
+.screens-section > .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.screens-section .section-intro {
+  grid-column: 1 / -1;
+}
+
 .signal-legend {
   display: inline-flex;
   align-items: center;
@@ -891,12 +901,13 @@ button {
 }
 
 .screen-story {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
   align-items: center;
-  gap: clamp(38px, 6vw, 76px);
-  margin-top: 24px;
-  padding: clamp(28px, 4.5vw, 50px);
+  gap: 28px;
+  margin-top: 0;
+  padding: clamp(26px, 3.2vw, 38px);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, rgba(12, 31, 46, .89), rgba(5, 16, 27, .95));
@@ -904,15 +915,31 @@ button {
 }
 
 .screen-story.reverse {
-  grid-template-columns: minmax(450px, 650px) minmax(0, 1fr);
+  display: flex;
 }
 
 .screen-story.reverse .story-copy {
-  order: 2;
+  order: initial;
 }
 
 .screen-story.reverse .proof-screen {
-  order: 1;
+  order: initial;
+}
+
+.screen-story .story-copy {
+  width: 100%;
+}
+
+.screen-story .proof-screen {
+  margin-top: auto;
+}
+
+.reversal-story {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 420px);
+  gap: clamp(38px, 6vw, 76px);
+  padding: clamp(30px, 4vw, 46px);
 }
 
 .story-no {
@@ -2128,6 +2155,7 @@ button {
 
   .screen-story,
   .screen-story.reverse {
+    display: grid;
     grid-template-columns: 1fr;
   }
 
@@ -2439,3 +2467,11 @@ button {
     padding: 21px 18px;
   }
 }
+  .screens-section > .container {
+    grid-template-columns: 1fr;
+  }
+
+  .screens-section .section-intro,
+  .reversal-story {
+    grid-column: 1;
+  }
