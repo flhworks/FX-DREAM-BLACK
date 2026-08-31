@@ -18,6 +18,8 @@
     if (!menuButton || !mobileNav) return;
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', 'メニューを開く');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    mobileNav.setAttribute('inert', '');
     mobileNav.classList.remove('is-open');
   };
 
@@ -26,6 +28,9 @@
       const willOpen = menuButton.getAttribute('aria-expanded') !== 'true';
       menuButton.setAttribute('aria-expanded', String(willOpen));
       menuButton.setAttribute('aria-label', willOpen ? 'メニューを閉じる' : 'メニューを開く');
+      mobileNav.setAttribute('aria-hidden', String(!willOpen));
+      if (willOpen) mobileNav.removeAttribute('inert');
+      else mobileNav.setAttribute('inert', '');
       mobileNav.classList.toggle('is-open', willOpen);
     });
     mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
@@ -55,7 +60,7 @@
     modal.hidden = true;
     document.body.classList.remove('modal-open');
     if (modalImage) {
-      modalImage.src = '';
+      modalImage.removeAttribute('src');
       modalImage.alt = '';
     }
     if (lastFocused) lastFocused.focus();
