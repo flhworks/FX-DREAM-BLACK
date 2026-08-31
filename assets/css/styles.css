@@ -768,6 +768,13 @@ button {
   gap: 48px;
 }
 
+.compact-intro h2,
+.roadmap-intro h2,
+.roles-intro h2,
+.flow-intro h2 {
+  font-size: clamp(2.4rem, 3.55vw, 3.5rem);
+}
+
 .compact-intro .eyebrow {
   grid-column: 1 / -1;
   margin-bottom: -28px;
