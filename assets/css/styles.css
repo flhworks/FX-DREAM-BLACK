@@ -352,7 +352,7 @@ button {
 
 .hero-shell {
   display: grid;
-  grid-template-columns: minmax(0, .87fr) minmax(510px, 1.13fr);
+  grid-template-columns: minmax(0, .95fr) minmax(510px, 1.05fr);
   align-items: center;
   gap: clamp(34px, 5vw, 68px);
 }
@@ -382,9 +382,18 @@ button {
   background: linear-gradient(102deg, var(--gold-soft), var(--gold) 48%, var(--aqua-soft));
   -webkit-background-clip: text;
   background-clip: text;
-  font-size: clamp(3.2rem, 5.4vw, 5.15rem);
+  font-size: clamp(3rem, 4.35vw, 4.35rem);
   font-weight: 900;
   white-space: nowrap;
+}
+
+.hero h1 strong small {
+  margin-right: .34em;
+  font-family: inherit;
+  font-size: .36em;
+  font-weight: 850;
+  letter-spacing: .04em;
+  vertical-align: .3em;
 }
 
 .hero h1 em {
@@ -562,6 +571,16 @@ button {
 
 .signal-pin.sell {
   color: var(--pink);
+}
+
+.signal-pin.buy b {
+  color: #04100d;
+  background: var(--aqua);
+}
+
+.signal-pin.sell b {
+  color: #18050b;
+  background: var(--pink);
 }
 
 .hero-buy {
@@ -2182,7 +2201,7 @@ button {
   }
 
   .hero h1 strong {
-    font-size: clamp(2.85rem, 14vw, 4rem);
+    font-size: clamp(2.55rem, 13vw, 3.7rem);
   }
 
   .hero h1 em {
